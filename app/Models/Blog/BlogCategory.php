@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlogTag extends Model
+class BlogCategory extends Model
 {
     //
 }

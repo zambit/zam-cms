@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Blog;
 
 use App\Http\Controllers\Controller;
-use App\Models\BlogPost;
+use App\Models\Blog\BlogPost;
 
 class ArticleController extends Controller
 {

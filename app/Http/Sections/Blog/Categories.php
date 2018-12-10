@@ -9,7 +9,7 @@ use SleepingOwl\Admin\Section;
 /**
  * Class Categories
  *
- * @property \App\Models\BlogCategory $model
+ * @property \App\Models\Blog\BlogCategory $model
  *
  * @see http://sleepingowladmin.ru/docs/model_configuration_section
  */

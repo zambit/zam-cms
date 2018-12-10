@@ -13,9 +13,9 @@ class AdminSectionsServiceProvider extends ServiceProvider
     protected $sections = [
         \App\Models\User::class => 'App\Http\Sections\Users',
         \App\Models\Language::class => 'App\Http\Sections\Languages',
-        \App\Models\BlogCategory::class => 'App\Http\Sections\Blog\Categories',
-        \App\Models\BlogTag::class => 'App\Http\Sections\Blog\Tags',
-        \App\Models\BlogPost::class => 'App\Http\Sections\Blog\Posts',
+        \App\Models\Blog\BlogCategory::class => 'App\Http\Sections\Blog\Categories',
+        \App\Models\Blog\BlogTag::class => 'App\Http\Sections\Blog\Tags',
+        \App\Models\Blog\BlogPost::class => 'App\Http\Sections\Blog\Posts',
     ];
 
     /**
