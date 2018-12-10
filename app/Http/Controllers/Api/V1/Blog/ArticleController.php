@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Blog;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog\BlogPost;
+use App\Models\Blog\Article;
 
 class ArticleController extends Controller
 {
@@ -12,7 +12,7 @@ class ArticleController extends Controller
         //
     }
 
-    public function show(BlogPost $blogPost)
+    public function show(Article $blogPost)
     {
         //
     }

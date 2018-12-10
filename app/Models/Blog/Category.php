@@ -4,7 +4,7 @@ namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BlogCategory extends Model
+class Category extends Model
 {
     //
 }

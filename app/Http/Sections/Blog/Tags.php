@@ -9,7 +9,7 @@ use SleepingOwl\Admin\Section;
 /**
  * Class Tags
  *
- * @property \App\Models\Blog\BlogTag $model
+ * @property \App\Models\Blog\Tag $model
  *
  * @see http://sleepingowladmin.ru/docs/model_configuration_section
  */
