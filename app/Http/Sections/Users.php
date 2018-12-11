@@ -71,7 +71,10 @@ class Users extends Section implements Initializable
             \AdminFormElement::text('email', 'Email')
                 ->required()
                 ->unique('Данный e-mail занят'),
-            \AdminFormElement::password('password', 'Пароль'),
+            \AdminFormElement::password('password', 'Пароль')
+                ->setHelpText('Оставьте пустым если не хотите менять пароль')
+                ->hashWithBcrypt()
+                ->allowEmptyValue(),
         ]);
 
         return $panelMain;
