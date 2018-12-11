@@ -8,6 +8,15 @@ use App\Models\Language;
 
 class LanguageController extends Controller
 {
+    /**
+     * GET api/v1/languages
+     *
+     * Get all available site languages.
+     *
+     * @group Language
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function index()
     {
         $languages = Language::all();

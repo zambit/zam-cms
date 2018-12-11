@@ -8,6 +8,15 @@ use App\Models\Blog\Category;
 
 class CategoryController extends Controller
 {
+    /**
+     * GET api/v1/blog/categories
+     *
+     * Get all available blog categories.
+     *
+     * @group Blog
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function index()
     {
         $categories = Category::all();

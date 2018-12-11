@@ -7,11 +7,17 @@ use App\Models\Blog\Article;
 
 class ArticleController extends Controller
 {
+    /**
+     * @group Blog
+     */
     public function index()
     {
         //
     }
 
+    /**
+     * @group Blog
+     */
     public function show(Article $blogPost)
     {
         //

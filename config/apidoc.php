@@ -42,8 +42,8 @@ return [
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters).
                  */
                 'prefixes' => [
-                    '*',
-                    // 'users/*',
+                    // '*',
+                    'api/v1/*',
                 ],
 
                 /*
@@ -103,7 +103,8 @@ return [
                      * Note that you must specify the full parameter, including curly brackets and question marks if any.
                      */
                     'bindings' => [
-                        // '{user}' => 1
+                        '{page}' => 1,
+                        '{article}' => 1,
                     ],
 
                     /*

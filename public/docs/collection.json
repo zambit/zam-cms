@@ -1,0 +1,120 @@
+{
+  "variables": [],
+  "info": {
+    "name": "",
+    "_postman_id": "1a8a2cb9-2f18-44fe-88bf-5839332e508f",
+    "description": "",
+    "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+  },
+  "item": [
+    {
+      "name": "Blog",
+      "description": "",
+      "item": [
+        {
+          "name": "GET api\/v1\/blog\/categories",
+          "request": {
+            "url": "http:\/\/localhost\/api\/v1\/blog\/categories",
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": "Get all available blog categories.",
+            "response": []
+          }
+        },
+        {
+          "name": "GET api\/v1\/blog\/tags",
+          "request": {
+            "url": "http:\/\/localhost\/api\/v1\/blog\/tags",
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": "Get all available blog tags.",
+            "response": []
+          }
+        },
+        {
+          "name": "http:\/\/localhost\/api\/v1\/blog\/articles",
+          "request": {
+            "url": "http:\/\/localhost\/api\/v1\/blog\/articles",
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": "",
+            "response": []
+          }
+        },
+        {
+          "name": "http:\/\/localhost\/api\/v1\/blog\/articles\/{article}",
+          "request": {
+            "url": "http:\/\/localhost\/api\/v1\/blog\/articles\/{article}",
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": "",
+            "response": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "Language",
+      "description": "",
+      "item": [
+        {
+          "name": "GET api\/v1\/languages",
+          "request": {
+            "url": "http:\/\/localhost\/api\/v1\/languages",
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": "Get all available site languages.",
+            "response": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "Page",
+      "description": "",
+      "item": [
+        {
+          "name": "http:\/\/localhost\/api\/v1\/pages",
+          "request": {
+            "url": "http:\/\/localhost\/api\/v1\/pages",
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": "",
+            "response": []
+          }
+        },
+        {
+          "name": "http:\/\/localhost\/api\/v1\/pages\/{page}",
+          "request": {
+            "url": "http:\/\/localhost\/api\/v1\/pages\/{page}",
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "description": "",
+            "response": []
+          }
+        }
+      ]
+    }
+  ]
+}
