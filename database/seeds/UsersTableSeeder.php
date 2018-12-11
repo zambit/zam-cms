@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->create()->each(function (User $u) {
+        factory(User::class, 5)->create()->each(function (User $u) {
             $u->update([
                 'email' => sprintf('user%s@demo.com', $u->id),
             ]);

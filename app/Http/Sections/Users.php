@@ -4,6 +4,7 @@ namespace App\Http\Sections;
 
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
+use SleepingOwl\Admin\Contracts\Initializable;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -13,7 +14,7 @@ use SleepingOwl\Admin\Section;
  *
  * @see http://sleepingowladmin.ru/docs/model_configuration_section
  */
-class Users extends Section
+class Users extends Section implements Initializable
 {
     /**
      * @see http://sleepingowladmin.ru/docs/model_configuration#ограничение-прав-доступа
@@ -25,19 +26,36 @@ class Users extends Section
     /**
      * @var string
      */
-    protected $title;
+    protected $title = 'Пользователи';
 
     /**
      * @var string
      */
     protected $alias;
 
+    protected $icon = 'fa fa-users';
+
+    public function initialize()
+    {
+        $this->addToNavigation($priority = 10);
+    }
+
     /**
      * @return DisplayInterface
      */
     public function onDisplay()
     {
-        // remove if unused
+        $display = \AdminDisplay::table()
+            ->setHtmlAttribute('class', 'table-primary')
+            ->setColumns(
+                \AdminColumn::text('id', '#')->setWidth('30px'),
+                \AdminColumn::text('name', 'Полное имя'),
+                \AdminColumn::email('email', 'Email'),
+                \AdminColumn::datetime('created_at', 'Создан')
+                    ->setFormat('d.m.Y H:i')->setWidth('150px')
+            );
+
+        return $display->paginate(20);
     }
 
     /**
@@ -47,7 +65,16 @@ class Users extends Section
      */
     public function onEdit($id)
     {
-        // remove if unused
+        $panelMain = \AdminForm::panel()->addBody([
+            \AdminFormElement::text('name', 'Полное имя')
+                ->required(),
+            \AdminFormElement::text('email', 'Email')
+                ->required()
+                ->unique('Данный e-mail занят'),
+            \AdminFormElement::password('password', 'Пароль'),
+        ]);
+
+        return $panelMain;
     }
 
     /**
