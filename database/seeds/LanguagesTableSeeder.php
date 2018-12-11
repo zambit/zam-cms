@@ -21,17 +21,17 @@ class LanguagesTableSeeder extends Seeder
         [
             'name' => 'English',
             'slug' => 'en',
-            'flag' => 'en.png',
+            'flag' => 'storage/languages/demo_en.png',
         ],
         [
             'name' => 'Русский',
             'slug' => 'ru',
-            'flag' => 'ru.png',
+            'flag' => 'storage/languages/demo_ru.png',
         ],
         [
             'name' => 'Polish',
             'slug' => 'pl',
-            'flag' => 'pl.png',
+            'flag' => 'storage/languages/demo_pl.png',
         ],
     ];
 }

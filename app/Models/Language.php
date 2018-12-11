@@ -33,6 +33,6 @@ class Language extends Model
      */
     public function getFlagUrl(): string
     {
-        return sprintf('%s/storage/languages/%s', config('app.url'), $this->flag);
+        return sprintf('%s/%s', config('app.url'), $this->flag);
     }
 }
