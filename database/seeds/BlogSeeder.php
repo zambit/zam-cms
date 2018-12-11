@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Blog\Category;
+use App\Models\Blog\Tag;
+use App\Models\Blog\Article;
+use App\Models\User;
+
 
 class BlogSeeder extends Seeder
 {
@@ -11,6 +16,22 @@ class BlogSeeder extends Seeder
      */
     public function run()
     {
-        //
+        /** @var Category[]|\Illuminate\Database\Eloquent\Collection $categories */
+        $categories = factory(Category::class, 5)->create();
+
+        /** @var Tag[]|\Illuminate\Database\Eloquent\Collection $tags */
+        $tags = factory(Tag::class, 20)->create();
+
+        $users = User::all();
+
+        factory(Article::class, 3)
+            ->make()
+            ->each(function (Article $a) use ($categories, $tags, $users) {
+                $a->category_id = $categories->random()->id;
+                $a->author_id = $users->random()->id;
+                $a->save();
+
+                $a->tags()->attach($tags->random(3)->pluck('id')->toArray());
+            });
     }
 }

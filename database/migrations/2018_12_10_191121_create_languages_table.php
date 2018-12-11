@@ -16,7 +16,7 @@ class CreateLanguagesTable extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('Полное название языка');
-            $table->string('slug')->unique()->comment('Двухбуквенный код ISO 639-1 (1998)');
+            $table->string('slug', 2)->unique()->comment('Двухбуквенный код ISO 639-1 (1998)');
             $table->string('flag')->comment('Картинка обозначения языка (флаг)');
             $table->timestamps();
         });

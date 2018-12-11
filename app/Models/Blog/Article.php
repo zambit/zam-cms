@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $author_id Автор
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Blog\Tag[] $tags
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article query()
@@ -26,4 +27,9 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $table = 'blog_posts';
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'blog_post_tag', 'post_id', 'tag_id');
+    }
 }

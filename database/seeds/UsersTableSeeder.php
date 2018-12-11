@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -11,6 +12,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(User::class)->create()->each(function (User $u) {
+            $u->update([
+                'email' => sprintf('user%s@demo.com', $u->id),
+            ]);
+        });
     }
 }
