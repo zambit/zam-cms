@@ -27,7 +27,7 @@ class Languages extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Поддерживаемые языки';
+    protected $title = 'Языки';
 
     /**
      * @var string
@@ -57,11 +57,7 @@ class Languages extends Section implements Initializable
                 })
             );
 
-        return $display
-            ->setApply(function ($query) {
-                $query->orderBy('slug', 'asc');
-            })
-            ->paginate(20);
+        return $display->paginate(20);
     }
 
     /**
