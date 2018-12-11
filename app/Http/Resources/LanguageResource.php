@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Language;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class LanguageResource extends JsonResource
@@ -14,6 +15,12 @@ class LanguageResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        /** @var JsonResource|Language $this */
+
+        return [
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'flag' => $this->getFlagUrl(),
+        ];
     }
 }

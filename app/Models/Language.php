@@ -25,4 +25,14 @@ class Language extends Model
         'slug',
         'flag',
     ];
+
+    /**
+     * УРЛ флага для языка
+     *
+     * @return string
+     */
+    public function getFlagUrl(): string
+    {
+        return sprintf('%s/storage/languages/%s', config('app.url'), $this->flag);
+    }
 }
