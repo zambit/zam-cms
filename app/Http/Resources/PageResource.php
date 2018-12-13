@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Page;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PageResource extends JsonResource
@@ -14,7 +15,7 @@ class PageResource extends JsonResource
      */
     public function toArray($request)
     {
-        /** @var JsonResource $this |Page */
+        /** @var JsonResource|Page $this */
 
         $fullMode = $request->input('full') === 'true'
             || $request->route('page') !== null;
@@ -25,6 +26,7 @@ class PageResource extends JsonResource
             'keywords' => $this->keywords,
             'description' => $this->description,
             'content' => $this->when($fullMode, $this->content),
+            'created_at' => $this->created_at,
         ];
     }
 }
