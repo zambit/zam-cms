@@ -21,7 +21,7 @@ class ArticleController extends Controller
     {
         $limit = $request->input('limit', 20);
 
-        $builder = Article::query();
+        $builder = Article::with('tags', 'author', 'category');
 
         if ($categoryId = $request->input('category')) {
             $builder->where('category_id', '=', $categoryId);
