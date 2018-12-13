@@ -4,6 +4,7 @@ namespace App\Http\Sections\Blog;
 
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
+use SleepingOwl\Admin\Contracts\Initializable;
 use SleepingOwl\Admin\Section;
 
 /**
@@ -13,7 +14,7 @@ use SleepingOwl\Admin\Section;
  *
  * @see http://sleepingowladmin.ru/docs/model_configuration_section
  */
-class Categories extends Section
+class Categories extends Section implements Initializable
 {
     /**
      * @see http://sleepingowladmin.ru/docs/model_configuration#ограничение-прав-доступа
@@ -25,19 +26,33 @@ class Categories extends Section
     /**
      * @var string
      */
-    protected $title;
+    protected $title = 'Blog Categories';
 
     /**
      * @var string
      */
     protected $alias;
 
+    protected $icon = 'fa fa-list';
+
+    public function initialize()
+    {
+        $this->addToNavigation($priority = 70);
+    }
+
     /**
      * @return DisplayInterface
      */
     public function onDisplay()
     {
-        // remove if unused
+        $display = \AdminDisplay::table()
+            ->setHtmlAttribute('class', 'table-primary')
+            ->setColumns(
+                \AdminColumn::text('id', '#')->setWidth('30px'),
+                \AdminColumn::text('name', 'Name')
+            );
+
+        return $display->paginate(100);
     }
 
     /**
@@ -47,7 +62,20 @@ class Categories extends Section
      */
     public function onEdit($id)
     {
-        // remove if unused
+        $panelEn = \AdminForm::panel()->addBody([
+            \AdminFormElement::text('name', 'Tag')
+                ->addValidationRule('max:80')
+                ->unique()
+                ->required(),
+            \AdminFormElement::textarea('description', 'Description')
+                ->required(),
+        ]);
+
+        $tabs = \AdminDisplay::tabbed();
+
+        $tabs->appendTab($panelEn, 'English');
+
+        return $tabs;
     }
 
     /**
