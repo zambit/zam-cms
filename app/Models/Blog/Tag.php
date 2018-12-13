@@ -26,4 +26,9 @@ class Tag extends Model
     public $translatedAttributes = [
         //
     ];
+
+    protected $visible = [
+        'id',
+        'name',
+    ];
 }

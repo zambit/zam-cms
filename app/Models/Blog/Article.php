@@ -50,4 +50,9 @@ class Article extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function getImageUrl(): string
+    {
+        return sprintf('%s/%s', config('app.url'), $this->image);
+    }
 }

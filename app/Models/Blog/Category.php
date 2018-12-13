@@ -24,6 +24,11 @@ class Category extends Model
 
     protected $table = 'blog_categories';
 
+    protected $visible = [
+        'id',
+        'name',
+    ];
+
     public $translatedAttributes = [
         //
     ];
