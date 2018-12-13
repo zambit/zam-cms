@@ -14,6 +14,17 @@ class PageResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        /** @var JsonResource $this |Page */
+
+        $fullMode = $request->input('full') === 'true'
+            || $request->route('page') !== null;
+
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'keywords' => $this->keywords,
+            'description' => $this->description,
+            'content' => $this->when($fullMode, $this->content),
+        ];
     }
 }
