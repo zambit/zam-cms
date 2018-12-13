@@ -67,7 +67,7 @@ class Languages extends Section implements Initializable
      */
     public function onEdit($id)
     {
-        $panelMain = \AdminForm::panel()->addBody([
+        $panelEn = \AdminForm::panel()->addBody([
             \AdminFormElement::text('name', 'Язык')
                 ->required(),
             \AdminFormElement::text('slug', 'Код ISO 639-1 (1998)')
@@ -80,7 +80,11 @@ class Languages extends Section implements Initializable
                 }),
         ]);
 
-        return $panelMain;
+        $tabs = \AdminDisplay::tabbed();
+
+        $tabs->appendTab($panelEn, 'English');
+
+        return $tabs;
     }
 
     /**
