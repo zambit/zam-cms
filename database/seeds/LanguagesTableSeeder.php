@@ -25,17 +25,23 @@ class LanguagesTableSeeder extends Seeder
 
     protected $languages = [
         [
-            'name' => 'English',
+            'name:en' => 'English',
+            'name:ru' => 'Английский',
+            'name:pl' => 'Angielski',
             'slug' => 'en',
             'flag' => 'storage/languages/demo_en.png',
         ],
         [
-            'name' => 'Русский',
+            'name:en' => 'Russian',
+            'name:ru' => 'Русский',
+            'name:pl' => 'Rosyjski',
             'slug' => 'ru',
             'flag' => 'storage/languages/demo_ru.png',
         ],
         [
-            'name' => 'Polish',
+            'name:en' => 'Polish',
+            'name:ru' => 'Польский',
+            'name:pl' => 'Polski',
             'slug' => 'pl',
             'flag' => 'storage/languages/demo_pl.png',
         ],
