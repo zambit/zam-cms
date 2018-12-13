@@ -27,7 +27,7 @@ class Languages extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Языки';
+    protected $title = 'Languages';
 
     /**
      * @var string
@@ -50,9 +50,9 @@ class Languages extends Section implements Initializable
             ->setHtmlAttribute('class', 'table-primary')
             ->setColumns(
                 \AdminColumn::text('id', '#')->setWidth('30px'),
-                \AdminColumn::text('name', 'Язык'),
-                \AdminColumn::text('slug', 'Код ISO 639-1 (1998)'),
-                \AdminColumn::custom('Флаг', function (Language $lang) {
+                \AdminColumn::text('name', 'Language'),
+                \AdminColumn::text('slug', 'ISO 639-1 (1998)'),
+                \AdminColumn::custom('Flag icon', function (Language $lang) {
                     return \HTML::image($lang->getFlagUrl(), null, ['width' => 32]);
                 })
             );
@@ -68,15 +68,15 @@ class Languages extends Section implements Initializable
     public function onEdit($id)
     {
         $panelEn = \AdminForm::panel()->addBody([
-            \AdminFormElement::text('name', 'Язык')
+            \AdminFormElement::text('name', 'Language')
                 ->required(),
-            \AdminFormElement::text('slug', 'Код ISO 639-1 (1998)')
+            \AdminFormElement::text('slug', 'ISO 639-1 (1998)')
                 ->required()
                 ->unique('Данный код занят'),
-            \AdminFormElement::image('flag', 'Флаг')
+            \AdminFormElement::image('flag', 'Flag icon')
                 ->required()
                 ->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
-                    return 'storage/languages'; // public/files
+                    return 'storage/languages';
                 }),
         ]);
 

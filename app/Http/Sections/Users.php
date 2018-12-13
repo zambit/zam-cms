@@ -26,7 +26,7 @@ class Users extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = 'Пользователи';
+    protected $title = 'Users';
 
     /**
      * @var string
@@ -49,9 +49,9 @@ class Users extends Section implements Initializable
             ->setHtmlAttribute('class', 'table-primary')
             ->setColumns(
                 \AdminColumn::text('id', '#')->setWidth('30px'),
-                \AdminColumn::text('name', 'Полное имя'),
+                \AdminColumn::text('name', 'Name'),
                 \AdminColumn::email('email', 'Email'),
-                \AdminColumn::datetime('created_at', 'Создан')
+                \AdminColumn::datetime('created_at', 'Created')
                     ->setFormat('d.m.Y H:i')->setWidth('150px')
             );
 
@@ -66,12 +66,12 @@ class Users extends Section implements Initializable
     public function onEdit($id)
     {
         $panelMain = \AdminForm::panel()->addBody([
-            \AdminFormElement::text('name', 'Полное имя')
+            \AdminFormElement::text('name', 'Nameя')
                 ->required(),
             \AdminFormElement::text('email', 'Email')
                 ->required()
                 ->unique('Данный e-mail занят'),
-            \AdminFormElement::password('password', 'Пароль')
+            \AdminFormElement::password('password', 'Password')
                 ->setHelpText('Оставьте пустым если не хотите менять пароль')
                 ->hashWithBcrypt()
                 ->allowEmptyValue(),
