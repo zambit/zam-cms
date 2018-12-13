@@ -20,6 +20,15 @@ class CreateLanguagesTable extends Migration
             $table->string('flag')->comment('Картинка обозначения языка (флаг)');
             $table->timestamps();
         });
+
+        Schema::create('language_translations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('language_id')->unsigned();
+            $table->string('locale')->index();
+
+            $table->unique(['language_id', 'locale']);
+            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
+        });
     }
 
     /**
@@ -29,6 +38,7 @@ class CreateLanguagesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('language_translations');
         Schema::dropIfExists('languages');
     }
 }

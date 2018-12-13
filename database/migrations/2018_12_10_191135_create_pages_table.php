@@ -22,6 +22,15 @@ class CreatePagesTable extends Migration
 
             $table->timestamps();
         });
+
+        Schema::create('page_translations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('page_id')->unsigned();
+            $table->string('locale')->index();
+
+            $table->unique(['page_id', 'locale']);
+            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
+        });
     }
 
     /**
@@ -31,6 +40,7 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('page_translations');
         Schema::dropIfExists('pages');
     }
 }

@@ -19,6 +19,15 @@ class CreateBlogCategoriesTable extends Migration
             $table->text('description')->comment('Описание категории');
             $table->timestamps();
         });
+
+        Schema::create('blog_category_translations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->string('locale')->index();
+
+            $table->unique(['category_id', 'locale']);
+            $table->foreign('category_id')->references('id')->on('blog_categories')->onDelete('cascade');
+        });
     }
 
     /**
@@ -28,6 +37,7 @@ class CreateBlogCategoriesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('blog_category_translations');
         Schema::dropIfExists('blog_categories');
     }
 }

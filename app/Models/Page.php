@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,5 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Page extends Model
 {
-    //
+    use Translatable;
+
+    public $translatedAttributes = [
+        //
+    ];
 }

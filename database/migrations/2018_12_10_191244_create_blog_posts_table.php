@@ -29,6 +29,15 @@ class CreateBlogPostsTable extends Migration
             $table->foreign('author_id')->references('id')->on('users');
         });
 
+        Schema::create('blog_post_translations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('article_id')->unsigned();
+            $table->string('locale')->index();
+
+            $table->unique(['article_id', 'locale']);
+            $table->foreign('article_id')->references('id')->on('blog_posts')->onDelete('cascade');
+        });
+
         Schema::create('blog_post_tag', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('post_id')->comment('Пост');
@@ -49,6 +58,7 @@ class CreateBlogPostsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('blog_post_translations');
         Schema::dropIfExists('blog_post_tag');
         Schema::dropIfExists('blog_posts');
     }

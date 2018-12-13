@@ -2,6 +2,7 @@
 
 namespace App\Models\Blog;
 
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -18,5 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
+    use Translatable;
+
     protected $table = 'blog_tags';
+
+    public $translatedAttributes = [
+        //
+    ];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -20,6 +21,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Language extends Model
 {
+    use Translatable;
+
+    public $translatedAttributes = [
+        //
+    ];
+
     protected $fillable = [
         'name',
         'slug',

@@ -18,6 +18,15 @@ class CreateBlogTagsTable extends Migration
             $table->string('name')->unique()->comment('Название тега');
             $table->timestamps();
         });
+
+        Schema::create('blog_tag_translations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('tag_id')->unsigned();
+            $table->string('locale')->index();
+
+            $table->unique(['tag_id', 'locale']);
+            $table->foreign('tag_id')->references('id')->on('blog_tags')->onDelete('cascade');
+        });
     }
 
     /**
@@ -27,6 +36,7 @@ class CreateBlogTagsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('blog_tag_translations');
         Schema::dropIfExists('blog_tags');
     }
 }
