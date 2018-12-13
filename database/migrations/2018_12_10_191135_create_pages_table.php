@@ -15,10 +15,6 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->comment('Заголовок');
-            $table->string('description')->comment('Описание');
-            $table->string('keywords')->comment('Ключевые слова');
-            $table->text('content')->comment('Контент');
 
             $table->timestamps();
         });
@@ -27,6 +23,11 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->integer('page_id')->unsigned();
             $table->string('locale')->index();
+
+            $table->string('title')->comment('Заголовок');
+            $table->string('description')->comment('Описание');
+            $table->string('keywords')->comment('Ключевые слова');
+            $table->text('content')->comment('Контент');
 
             $table->unique(['page_id', 'locale']);
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');

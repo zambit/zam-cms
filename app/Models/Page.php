@@ -36,6 +36,9 @@ class Page extends Model
     use Translatable;
 
     public $translatedAttributes = [
-        //
+        'title',
+        'description',
+        'keywords',
+        'content',
     ];
 }

@@ -35,7 +35,7 @@ class Language extends Model
     use Translatable;
 
     public $translatedAttributes = [
-        //
+        'name',
     ];
 
     protected $fillable = [

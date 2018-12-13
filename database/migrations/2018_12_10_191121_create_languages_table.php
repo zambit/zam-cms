@@ -15,7 +15,6 @@ class CreateLanguagesTable extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->comment('Полное название языка');
             $table->string('slug', 2)->unique()->comment('Двухбуквенный код ISO 639-1 (1998)');
             $table->string('flag')->comment('Картинка обозначения языка (флаг)');
             $table->timestamps();
@@ -25,6 +24,8 @@ class CreateLanguagesTable extends Migration
             $table->increments('id');
             $table->integer('language_id')->unsigned();
             $table->string('locale')->index();
+
+            $table->string('name')->comment('Полное название языка');
 
             $table->unique(['language_id', 'locale']);
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');

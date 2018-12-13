@@ -15,8 +15,6 @@ class CreateBlogCategoriesTable extends Migration
     {
         Schema::create('blog_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->comment('Название категории');
-            $table->text('description')->comment('Описание категории');
             $table->timestamps();
         });
 
@@ -24,6 +22,9 @@ class CreateBlogCategoriesTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->string('locale')->index();
+
+            $table->string('name')->comment('Название категории');
+            $table->text('description')->comment('Описание категории');
 
             $table->unique(['category_id', 'locale']);
             $table->foreign('category_id')->references('id')->on('blog_categories')->onDelete('cascade');

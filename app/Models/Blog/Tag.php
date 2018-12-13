@@ -35,7 +35,7 @@ class Tag extends Model
     protected $table = 'blog_tags';
 
     public $translatedAttributes = [
-        //
+        'name',
     ];
 
     protected $visible = [

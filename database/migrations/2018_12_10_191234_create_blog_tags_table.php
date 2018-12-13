@@ -15,7 +15,6 @@ class CreateBlogTagsTable extends Migration
     {
         Schema::create('blog_tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique()->comment('Название тега');
             $table->timestamps();
         });
 
@@ -23,6 +22,8 @@ class CreateBlogTagsTable extends Migration
             $table->increments('id');
             $table->integer('tag_id')->unsigned();
             $table->string('locale')->index();
+
+            $table->string('name')->unique()->comment('Название тега');
 
             $table->unique(['tag_id', 'locale']);
             $table->foreign('tag_id')->references('id')->on('blog_tags')->onDelete('cascade');

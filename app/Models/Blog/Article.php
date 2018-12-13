@@ -46,7 +46,11 @@ class Article extends Model
     protected $table = 'blog_posts';
 
     public $translatedAttributes = [
-        //
+        'header',
+        'title',
+        'description',
+        'keywords',
+        'content',
     ];
 
     /**

@@ -15,14 +15,9 @@ class CreateBlogPostsTable extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('header')->comment('Наименование');
-            $table->string('title')->comment('Заголовок');
-            $table->string('description')->comment('Описание');
-            $table->string('keywords')->comment('Ключевые слова');
-            $table->string('image')->comment('Главная картинка');
             $table->unsignedInteger('category_id')->comment('Категория');
-            $table->text('content')->comment('Контент');
             $table->unsignedInteger('author_id')->comment('Автор');
+            $table->string('image')->comment('Главная картинка');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('blog_categories');
@@ -33,6 +28,12 @@ class CreateBlogPostsTable extends Migration
             $table->increments('id');
             $table->integer('article_id')->unsigned();
             $table->string('locale')->index();
+
+            $table->string('header')->comment('Наименование');
+            $table->string('title')->comment('Заголовок');
+            $table->string('description')->comment('Описание');
+            $table->string('keywords')->comment('Ключевые слова');
+            $table->text('content')->comment('Контент');
 
             $table->unique(['article_id', 'locale']);
             $table->foreign('article_id')->references('id')->on('blog_posts')->onDelete('cascade');
