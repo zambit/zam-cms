@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Blog;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Blog\ArticleResource;
 use App\Models\Blog\Article;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -15,9 +16,11 @@ class ArticleController extends Controller
      *
      * @group Blog
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::paginate(20);
+        $limit = $request->input('limit', 20);
+
+        $articles = Article::paginate($limit);
 
         return ArticleResource::collection($articles);
     }
