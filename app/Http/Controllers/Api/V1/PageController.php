@@ -13,7 +13,9 @@ class PageController extends Controller
      *
      * Get all available site pages.
      *
+     * @queryParam lang Current language. English default.
      * @group Page
+     * @queryParam full If `true` show full content.
      */
     public function index()
     {
@@ -27,7 +29,10 @@ class PageController extends Controller
      *
      * Get page by id
      *
+     * @queryParam lang Current language. English default.
      * @group Page
+     * @param Page $page
+     * @return PageResource
      */
     public function show(Page $page)
     {

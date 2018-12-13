@@ -13,6 +13,7 @@ class TagController extends Controller
      *
      * Get all available blog tags.
      *
+     * @queryParam lang Current language. English default.
      * @group Blog
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection

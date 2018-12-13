@@ -13,6 +13,7 @@ class LanguageController extends Controller
      *
      * Get all available site languages.
      *
+     * @queryParam lang Current language. English default.
      * @group Language
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection

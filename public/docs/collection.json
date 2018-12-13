@@ -2,7 +2,7 @@
   "variables": [],
   "info": {
     "name": "",
-    "_postman_id": "1a8a2cb9-2f18-44fe-88bf-5839332e508f",
+    "_postman_id": "cb0db7e1-fa51-4c64-a1b4-c1313ef7ff6c",
     "description": "",
     "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
   },
@@ -38,7 +38,7 @@
           }
         },
         {
-          "name": "http:\/\/localhost\/api\/v1\/blog\/articles",
+          "name": "GET api\/v1\/blog\/articles",
           "request": {
             "url": "http:\/\/localhost\/api\/v1\/blog\/articles",
             "method": "GET",
@@ -46,12 +46,12 @@
               "mode": "formdata",
               "formdata": []
             },
-            "description": "",
+            "description": "Get blog articles.",
             "response": []
           }
         },
         {
-          "name": "http:\/\/localhost\/api\/v1\/blog\/articles\/{article}",
+          "name": "GET api\/v1\/blog\/articles\/{article}",
           "request": {
             "url": "http:\/\/localhost\/api\/v1\/blog\/articles\/{article}",
             "method": "GET",
@@ -59,7 +59,7 @@
               "mode": "formdata",
               "formdata": []
             },
-            "description": "",
+            "description": "Get blog article by id",
             "response": []
           }
         }
@@ -89,7 +89,7 @@
       "description": "",
       "item": [
         {
-          "name": "http:\/\/localhost\/api\/v1\/pages",
+          "name": "GET api\/v1\/pages",
           "request": {
             "url": "http:\/\/localhost\/api\/v1\/pages",
             "method": "GET",
@@ -97,12 +97,12 @@
               "mode": "formdata",
               "formdata": []
             },
-            "description": "",
+            "description": "Get all available site pages.",
             "response": []
           }
         },
         {
-          "name": "http:\/\/localhost\/api\/v1\/pages\/{page}",
+          "name": "GET api\/v1\/pages\/{page}",
           "request": {
             "url": "http:\/\/localhost\/api\/v1\/pages\/{page}",
             "method": "GET",
@@ -110,7 +110,7 @@
               "mode": "formdata",
               "formdata": []
             },
-            "description": "",
+            "description": "Get page by id",
             "response": []
           }
         }

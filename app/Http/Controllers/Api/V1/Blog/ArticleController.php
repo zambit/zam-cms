@@ -16,6 +16,14 @@ class ArticleController extends Controller
      * Get blog articles.
      *
      * @group Blog
+     * @queryParam lang Current language. English default.
+     * @queryParam full If `true` show full content.
+     * @queryParam limit How many items show on a page (default 20).
+     * @queryParam category Filter by a category ID.
+     * @queryParam author Filter by an author ID.
+     * @queryParam tags Filter by an tag ID. You can list several, separated by commas.
+     * @param Request $request
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(Request $request)
     {
@@ -51,7 +59,10 @@ class ArticleController extends Controller
      *
      * Get blog article by id
      *
+     * @queryParam lang Current language. English default.
      * @group Blog
+     * @param Article $article
+     * @return ArticleResource
      */
     public function show(Article $article)
     {

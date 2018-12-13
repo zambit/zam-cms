@@ -13,6 +13,7 @@ class CategoryController extends Controller
      *
      * Get all available blog categories.
      *
+     * @queryParam lang Current language. English default.
      * @group Blog
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection

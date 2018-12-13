@@ -49,21 +49,41 @@ class Article extends Model
         //
     ];
 
+    /**
+     * Теги статьи блога
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'blog_post_tag', 'post_id', 'tag_id');
     }
 
+    /**
+     * Автор статьи блога
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    /**
+     * Категория статьи блога
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    /**
+     * УРЛ изображения статьи блога
+     *
+     * @return string
+     */
     public function getImageUrl(): string
     {
         return sprintf('%s/%s', config('app.url'), $this->image);
