@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Blog;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Blog\ArticleResource;
 use App\Models\Blog\Article;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -28,6 +29,16 @@ class ArticleController extends Controller
 
         if ($authorId = $request->input('author')) {
             $builder->where('author_id', '=', $authorId);
+        }
+
+        if ($tagIds = $request->input('tags')) {
+            $tagIds = str_replace(' ', '', $tagIds);
+
+            $tags = explode(',', $tagIds);
+
+            $builder->whereHas('tags', function (Builder $query) use ($tags) {
+                $query->whereIn('blog_tags.id', $tags);
+            });
         }
 
         $articles = $builder->paginate($limit);
