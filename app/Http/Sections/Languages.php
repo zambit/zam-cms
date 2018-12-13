@@ -38,7 +38,7 @@ class Languages extends Section implements Initializable
 
     public function initialize()
     {
-        $this->addToNavigation($priority = 20);
+        $this->addToNavigation($priority = 40);
     }
 
     /**

@@ -37,7 +37,7 @@ class Pages extends Section implements Initializable
 
     public function initialize()
     {
-        $this->addToNavigation($priority = 5);
+        $this->addToNavigation($priority = 20);
     }
 
     /**

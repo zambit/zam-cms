@@ -37,7 +37,7 @@ class Users extends Section implements Initializable
 
     public function initialize()
     {
-        $this->addToNavigation($priority = 10);
+        $this->addToNavigation($priority = 30);
     }
 
     /**

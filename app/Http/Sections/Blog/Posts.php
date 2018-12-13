@@ -40,7 +40,7 @@ class Posts extends Section implements Initializable
 
     public function initialize()
     {
-        $this->addToNavigation($priority = 15);
+        $this->addToNavigation($priority = 10);
     }
 
     /**
