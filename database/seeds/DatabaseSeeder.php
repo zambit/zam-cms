@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->clearImages(storage_path('app/public/articles'), []);
 
-        $this->call(UsersTableSeeder::class);
         $this->call(LanguagesTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(BlogSeeder::class);
     }

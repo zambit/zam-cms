@@ -15,6 +15,12 @@ class LanguagesTableSeeder extends Seeder
         foreach ($this->languages as $language) {
             Language::query()->create($language);
         }
+
+        $langs = Language::all()->pluck('slug')->toArray();
+
+        config([
+            'translatable.locales' => $langs,
+        ]);
     }
 
     protected $languages = [

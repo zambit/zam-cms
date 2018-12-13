@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Language;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $langs = Language::all()->pluck('slug')->toArray();
+
+        if (empty($langs)) {
+            $langs = ['en'];
+        }
+
+        config([
+            'translatable.locales' => $langs,
+        ]);
     }
 
     /**
