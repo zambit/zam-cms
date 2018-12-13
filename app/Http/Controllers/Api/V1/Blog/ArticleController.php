@@ -26,6 +26,10 @@ class ArticleController extends Controller
             $builder->where('category_id', '=', $categoryId);
         }
 
+        if ($authorId = $request->input('author')) {
+            $builder->where('author_id', '=', $authorId);
+        }
+
         $articles = $builder->paginate($limit);
 
         return ArticleResource::collection($articles);
