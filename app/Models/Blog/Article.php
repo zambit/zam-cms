@@ -20,10 +20,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $author_id Автор
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $author
+ * @property-read \App\Models\Blog\Category $category
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Blog\Tag[] $tags
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Translations\ArticleTranslation[] $translations
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article listsTranslations($translationField)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article notTranslatedIn($locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article orWhereTranslation($key, $value, $locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article orWhereTranslationLike($key, $value, $locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article orderByTranslation($key, $sortmethod = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article translated()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article translatedIn($locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article whereTranslation($key, $value, $locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article whereTranslationLike($key, $value, $locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Blog\Article withTranslation()
  * @mixin \Eloquent
  */
 class Article extends Model
