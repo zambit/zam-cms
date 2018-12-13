@@ -69,9 +69,11 @@ class Languages extends Section implements Initializable
     {
         $panelEn = \AdminForm::panel()->addBody([
             \AdminFormElement::text('name', 'Language')
+                ->addValidationRule('size:80')
                 ->required(),
             \AdminFormElement::text('slug', 'ISO 639-1 (1998)')
                 ->required()
+                ->addValidationRule('size:2')
                 ->unique('Данный код занят'),
             \AdminFormElement::image('flag', 'Flag icon')
                 ->required()
