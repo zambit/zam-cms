@@ -20,7 +20,13 @@ class ArticleController extends Controller
     {
         $limit = $request->input('limit', 20);
 
-        $articles = Article::paginate($limit);
+        $builder = Article::query();
+
+        if ($categoryId = $request->input('category')) {
+            $builder->where('category_id', '=', $categoryId);
+        }
+
+        $articles = $builder->paginate($limit);
 
         return ArticleResource::collection($articles);
     }
