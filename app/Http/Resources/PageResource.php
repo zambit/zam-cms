@@ -25,7 +25,7 @@ class PageResource extends JsonResource
             'title' => $this->title,
             'keywords' => $this->keywords,
             'description' => $this->description,
-            'content' => $this->when($fullMode, $this->content),
+            'content' => $this->when($fullMode, json_decode($this->content)),
             'created_at' => $this->created_at,
         ];
     }

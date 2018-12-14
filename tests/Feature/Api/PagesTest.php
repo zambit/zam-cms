@@ -79,7 +79,6 @@ class PagesTest extends TestCase
         $this->assertTrue(Str::startsWith($item->title, 'RU:'));
         $this->assertTrue(Str::startsWith($item->keywords, 'RU:'));
         $this->assertTrue(Str::startsWith($item->description, 'RU:'));
-        $this->assertTrue(Str::startsWith($item->content, 'RU:'));
     }
 
     private $structure = [

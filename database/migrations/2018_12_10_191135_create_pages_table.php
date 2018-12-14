@@ -27,7 +27,7 @@ class CreatePagesTable extends Migration
             $table->string('title')->comment('Заголовок');
             $table->string('description')->comment('Описание');
             $table->string('keywords')->comment('Ключевые слова');
-            $table->text('content')->comment('Контент');
+            $table->json('content')->comment('Контент');
 
             $table->unique(['page_id', 'locale']);
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
