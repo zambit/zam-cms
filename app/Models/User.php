@@ -11,7 +11,6 @@ use Illuminate\Notifications\Notifiable;
  * @property int $id
  * @property string $name Полное имя
  * @property string $email E-mail
- * @property string|null $email_verified_at Дата верификации e-mail
  * @property string $password Пароль
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at

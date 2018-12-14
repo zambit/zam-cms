@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name')->comment('Полное имя');
             $table->string('email')->unique()->comment('E-mail');
-            $table->timestamp('email_verified_at')->nullable()->comment('Дата верификации e-mail');
             $table->string('password')->comment('Пароль');
             $table->rememberToken();
             $table->timestamps();
