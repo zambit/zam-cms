@@ -66,7 +66,7 @@ class Users extends Section implements Initializable
     public function onEdit($id)
     {
         $panelMain = \AdminForm::panel()->addBody([
-            \AdminFormElement::text('name', 'Nameя')
+            \AdminFormElement::text('name', 'Name')
                 ->required(),
             \AdminFormElement::text('email', 'Email')
                 ->required()
