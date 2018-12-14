@@ -7,7 +7,7 @@ $factory->define(\App\Models\Blog\Tag::class, function (Faker $faker) {
     $word = $faker->unique()->word;
 
     return [
-        'name:en' => $word,
+        'name:en' => 'EN: ' . $word,
         'name:ru' => 'RU: ' . $word,
         'name:pl' => 'PL: ' . $word,
     ];

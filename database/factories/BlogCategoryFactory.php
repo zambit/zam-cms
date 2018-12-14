@@ -8,8 +8,8 @@ $factory->define(\App\Models\Blog\Category::class, function (Faker $faker) {
     $description = $faker->sentences(3, true);
 
     return [
-        'name:en' => $word,
-        'description:en' => $description,
+        'name:en' => 'EN: ' . $word,
+        'description:en' => 'EN: ' . $description,
 
         'name:ru' => 'RU: ' . $word,
         'description:ru' => 'RU: ' . $description,

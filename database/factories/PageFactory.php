@@ -10,10 +10,10 @@ $factory->define(App\Models\Page::class, function (Faker $faker) {
     $keywords = implode(', ', $faker->words(5));
 
     return [
-        'title:en' => $title,
-        'description:en' => $description,
-        'keywords:en' => $keywords,
-        'content:en' => $content,
+        'title:en' => 'EN: ' . $title,
+        'description:en' => 'EN: ' . $description,
+        'keywords:en' => 'EN: ' . $keywords,
+        'content:en' => 'EN: ' . $content,
 
         'title:ru' => 'RU: ' . $title,
         'description:ru' => 'RU: ' . $description,

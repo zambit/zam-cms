@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use App\Models\Blog\Article;
 use App\Models\Blog\Category;
 use App\Models\Blog\Tag;
-use App\Models\Blog\Article;
 use App\Models\User;
+use Illuminate\Database\Seeder;
 
 
 class BlogSeeder extends Seeder
@@ -24,7 +24,7 @@ class BlogSeeder extends Seeder
 
         $users = User::all();
 
-        factory(Article::class, 3)
+        factory(Article::class, 3)->states('image')
             ->make()
             ->each(function (Article $a) use ($categories, $tags, $users) {
                 $a->category_id = $categories->random()->id;

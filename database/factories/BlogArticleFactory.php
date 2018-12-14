@@ -11,15 +11,15 @@ $factory->define(\App\Models\Blog\Article::class, function (Faker $faker) {
     $keywords = implode(', ', $faker->words(5));
 
     return [
-        'image' => 'storage/articles/' . $faker->image(storage_path('app/public/articles'), 480, 640, 'people', false),
+        'image' => 'storage/articles/demo.jpg',
         'category_id' => null,
         'author_id' => null,
 
-        'header:en' => $header,
-        'title:en' => $title,
-        'description:en' => $description,
-        'keywords:en' => $keywords,
-        'content:en' => $content,
+        'header:en' => 'EN: ' . $header,
+        'title:en' => 'EN: ' . $title,
+        'description:en' => 'EN: ' . $description,
+        'keywords:en' => 'EN: ' . $keywords,
+        'content:en' => 'EN: ' . $content,
 
         'header:ru' => 'RU: ' . $header,
         'title:ru' => 'RU: ' . $title,
@@ -32,5 +32,13 @@ $factory->define(\App\Models\Blog\Article::class, function (Faker $faker) {
         'description:pl' => 'PL: ' . $description,
         'keywords:pl' => 'PL: ' . $keywords,
         'content:pl' => 'PL: ' . $content,
+    ];
+});
+
+$factory->state(\App\Models\Blog\Article::class, 'image', function (Faker $faker) {
+
+    return [
+        'image' => 'storage/articles/' . $faker->image(storage_path('app/public/articles'), 480, 640, 'people', false),
+
     ];
 });
