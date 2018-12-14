@@ -4,6 +4,7 @@ namespace App\Http\Sections\Blog;
 
 use App\Models\Blog\Category;
 use App\Models\Blog\Tag;
+use App\Models\Language;
 use App\Models\User;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
@@ -69,20 +70,13 @@ class Posts extends Section implements Initializable
      */
     public function onEdit($id)
     {
-        $panelEn = \AdminForm::panel()->addBody([
-            \AdminFormElement::text('header', 'Header')
-                ->addValidationRule('max:255')
-                ->required(),
-            \AdminFormElement::text('title', 'Title')
-                ->addValidationRule('max:255')
-                ->required(),
-            \AdminFormElement::wysiwyg('content', 'Content')
-                ->required(),
-            \AdminFormElement::textarea('description', 'Description')
-                ->required(),
-            \AdminFormElement::textarea('keywords', 'Keywords')
-                ->addValidationRule('max:255')
-                ->required(),
+        $form = \AdminForm::panel();
+
+        $tabs = \AdminDisplay::tabbed();
+
+        $languages = Language::all()->pluck('name', 'slug')->toArray();
+
+        $form->addHeader([
             \AdminFormElement::select('category_id', 'Category', Category::class)
                 ->required()
                 ->setDisplay('name'),
@@ -100,11 +94,29 @@ class Posts extends Section implements Initializable
                 }),
         ]);
 
-        $tabs = \AdminDisplay::tabbed();
+        foreach ($languages as $slug => $language) {
+            $panel = new \SleepingOwl\Admin\Form\FormElements([
+                \AdminFormElement::text('header:' . $slug, 'Header')
+                    ->addValidationRule('max:255')
+                    ->required(),
+                \AdminFormElement::text('title:' . $slug, 'Title')
+                    ->addValidationRule('max:255')
+                    ->required(),
+                \AdminFormElement::textarea('content:' . $slug, 'Content')
+                    ->required(),
+                \AdminFormElement::textarea('description:' . $slug, 'Description')
+                    ->required(),
+                \AdminFormElement::textarea('keywords:' . $slug, 'Keywords')
+                    ->addValidationRule('max:255')
+                    ->required(),
+            ]);
 
-        $tabs->appendTab($panelEn, 'English');
+            $tabs->appendTab($panel, $language);
+        }
 
-        return $tabs;
+        $form->addElement($tabs);
+
+        return $form;
     }
 
     /**

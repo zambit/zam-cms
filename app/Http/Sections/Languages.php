@@ -67,10 +67,17 @@ class Languages extends Section implements Initializable
      */
     public function onEdit($id)
     {
-        $panelEn = \AdminForm::panel()->addBody([
-            \AdminFormElement::text('name', 'Language')
-                ->addValidationRule('size:80')
-                ->required(),
+        $form = \AdminForm::panel();
+
+        $tabs = \AdminDisplay::tabbed();
+
+        $languages = Language::all()->pluck('name', 'slug')->toArray();
+
+        if (empty($languages)) {
+            $languages = ['en' => 'English'];
+        }
+
+        $form->addHeader([
             \AdminFormElement::text('slug', 'ISO 639-1 (1998)')
                 ->required()
                 ->addValidationRule('size:2')
@@ -82,11 +89,19 @@ class Languages extends Section implements Initializable
                 }),
         ]);
 
-        $tabs = \AdminDisplay::tabbed();
+        foreach ($languages as $slug => $language) {
+            $panel = new \SleepingOwl\Admin\Form\FormElements([
+                \AdminFormElement::text('name:' . $slug, 'Language')
+                    ->addValidationRule('max:80')
+                    ->required(),
+            ]);
 
-        $tabs->appendTab($panelEn, 'English');
+            $tabs->appendTab($panel, $language);
+        }
 
-        return $tabs;
+        $form->addElement($tabs);
+
+        return $form;
     }
 
     /**

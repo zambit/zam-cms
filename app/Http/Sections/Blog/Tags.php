@@ -2,6 +2,7 @@
 
 namespace App\Http\Sections\Blog;
 
+use App\Models\Language;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
@@ -62,18 +63,25 @@ class Tags extends Section implements Initializable
      */
     public function onEdit($id)
     {
-        $panelEn = \AdminForm::panel()->addBody([
-            \AdminFormElement::text('name', 'Tag')
-                ->addValidationRule('max:80')
-                ->unique()
-                ->required(),
-        ]);
+        $form = \AdminForm::panel();
 
         $tabs = \AdminDisplay::tabbed();
 
-        $tabs->appendTab($panelEn, 'English');
+        $languages = Language::all()->pluck('name', 'slug')->toArray();
 
-        return $tabs;
+        foreach ($languages as $slug => $language) {
+            $panel = new \SleepingOwl\Admin\Form\FormElements([
+                \AdminFormElement::text('name:' . $slug, 'Tag')
+                    ->addValidationRule('max:80')
+                    ->required(),
+            ]);
+
+            $tabs->appendTab($panel, $language);
+        }
+
+        $form->addElement($tabs);
+
+        return $form;
     }
 
     /**

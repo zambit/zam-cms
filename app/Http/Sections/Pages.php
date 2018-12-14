@@ -2,6 +2,7 @@
 
 namespace App\Http\Sections;
 
+use App\Models\Language;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Contracts\Initializable;
@@ -64,24 +65,32 @@ class Pages extends Section implements Initializable
      */
     public function onEdit($id)
     {
-        $panelEn = \AdminForm::panel()->addBody([
-            \AdminFormElement::text('title', 'Title')
-                ->addValidationRule('max:255')
-                ->required(),
-            \AdminFormElement::textarea('description', 'Description')
-                ->required(),
-            \AdminFormElement::textarea('keywords', 'Keywords')
-                ->addValidationRule('max:255')
-                ->required(),
-            \AdminFormElement::textarea('content', 'Content')
-                ->required(),
-        ]);
+        $form = \AdminForm::panel();
 
         $tabs = \AdminDisplay::tabbed();
 
-        $tabs->appendTab($panelEn, 'English');
+        $languages = Language::all()->pluck('name', 'slug')->toArray();
 
-        return $tabs;
+        foreach ($languages as $slug => $language) {
+            $panel = new \SleepingOwl\Admin\Form\FormElements([
+                \AdminFormElement::text('title:' . $slug, 'Title')
+                    ->addValidationRule('max:255')
+                    ->required(),
+                \AdminFormElement::textarea('description:' . $slug, 'Description')
+                    ->required(),
+                \AdminFormElement::textarea('keywords:' . $slug, 'Keywords')
+                    ->addValidationRule('max:255')
+                    ->required(),
+                \AdminFormElement::textarea('content:' . $slug, 'Content')
+                    ->required(),
+            ]);
+
+            $tabs->appendTab($panel, $language);
+        }
+
+        $form->addElement($tabs);
+
+        return $form;
     }
 
     /**
