@@ -73,11 +73,13 @@ class Users extends Section implements Initializable
                 ->unique()
                 ->addValidationRule('email'),
             \AdminFormElement::password('password', 'Password')
-                ->required()
                 ->setHelpText('Оставьте пустым если не хотите менять пароль')
                 ->hashWithBcrypt()
+                ->addValidationRule('nullable')
                 ->addValidationRule('min:6')
-                ->allowEmptyValue(),
+                ->setValueSkipped(function ($model) {
+                    return empty(request()->input('password'));
+                }),
         ]);
 
         return $panelMain;
