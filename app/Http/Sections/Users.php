@@ -70,10 +70,13 @@ class Users extends Section implements Initializable
                 ->required(),
             \AdminFormElement::text('email', 'Email')
                 ->required()
-                ->unique('Данный e-mail занят'),
+                ->unique()
+                ->addValidationRule('email'),
             \AdminFormElement::password('password', 'Password')
+                ->required()
                 ->setHelpText('Оставьте пустым если не хотите менять пароль')
                 ->hashWithBcrypt()
+                ->addValidationRule('min:6')
                 ->allowEmptyValue(),
         ]);
 
@@ -85,7 +88,20 @@ class Users extends Section implements Initializable
      */
     public function onCreate()
     {
-        return $this->onEdit(null);
+        $panelMain = \AdminForm::panel()->addBody([
+            \AdminFormElement::text('name', 'Name')
+                ->required(),
+            \AdminFormElement::text('email', 'Email')
+                ->required()
+                ->unique()
+                ->addValidationRule('email'),
+            \AdminFormElement::password('password', 'Password')
+                ->required()
+                ->addValidationRule('min:6')
+                ->hashWithBcrypt(),
+        ]);
+
+        return $panelMain;
     }
 
     /**
