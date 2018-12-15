@@ -80,8 +80,7 @@ class Languages extends Section implements Initializable
         $form->addHeader([
             \AdminFormElement::text('slug', 'ISO 639-1 (1998)')
                 ->required()
-                ->addValidationRule('size:2')
-                ->unique('Данный код занят'),
+                ->addValidationRule('size:2'),
             \AdminFormElement::image('flag', 'Flag icon')
                 ->required()
                 ->setUploadPath(function (\Illuminate\Http\UploadedFile $file) {
