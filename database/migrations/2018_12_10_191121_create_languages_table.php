@@ -25,7 +25,7 @@ class CreateLanguagesTable extends Migration
             $table->integer('language_id')->unsigned();
             $table->string('locale')->index();
 
-            $table->string('name')->comment('Полное название языка');
+            $table->string('name')->nullable()->comment('Полное название языка');
 
             $table->unique(['language_id', 'locale']);
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');

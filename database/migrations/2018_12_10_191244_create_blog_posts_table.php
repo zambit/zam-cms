@@ -29,11 +29,11 @@ class CreateBlogPostsTable extends Migration
             $table->integer('article_id')->unsigned();
             $table->string('locale')->index();
 
-            $table->string('header')->comment('Наименование');
-            $table->string('title')->comment('Заголовок');
-            $table->string('description')->comment('Описание');
-            $table->string('keywords')->comment('Ключевые слова');
-            $table->text('content')->comment('Контент');
+            $table->string('header')->nullable()->comment('Наименование');
+            $table->string('title')->nullable()->comment('Заголовок');
+            $table->string('description')->nullable()->comment('Описание');
+            $table->string('keywords')->nullable()->comment('Ключевые слова');
+            $table->text('content')->nullable()->comment('Контент');
 
             $table->unique(['article_id', 'locale']);
             $table->foreign('article_id')->references('id')->on('blog_posts')->onDelete('cascade');

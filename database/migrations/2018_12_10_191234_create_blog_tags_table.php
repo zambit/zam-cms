@@ -23,7 +23,7 @@ class CreateBlogTagsTable extends Migration
             $table->integer('tag_id')->unsigned();
             $table->string('locale')->index();
 
-            $table->string('name')->unique()->comment('Название тега');
+            $table->string('name')->nullable()->comment('Название тега');
 
             $table->unique(['tag_id', 'locale']);
             $table->foreign('tag_id')->references('id')->on('blog_tags')->onDelete('cascade');

@@ -69,14 +69,21 @@ class Categories extends Section implements Initializable
 
         $languages = Language::all()->pluck('name', 'slug')->toArray();
 
+        $elements = [];
+
         foreach ($languages as $slug => $language) {
-            $panel = new \SleepingOwl\Admin\Form\FormElements([
-                \AdminFormElement::text('name:' . $slug, 'Category')
-                    ->addValidationRule('max:80')
-                    ->required(),
-                \AdminFormElement::textarea('description:' . $slug, 'Description')
-                    ->required(),
-            ]);
+            $elements['name'] = \AdminFormElement::text('name:' . $slug, 'Category')
+                ->addValidationRule('max:80');
+
+            $elements['description'] = \AdminFormElement::textarea('description:' . $slug, 'Description');
+
+            if ($slug === config('app.locale')) {
+                foreach ($elements as $element) {
+                    $element->required();
+                }
+            }
+
+            $panel = new \SleepingOwl\Admin\Form\FormElements($elements);
 
             $tabs->appendTab($panel, $language);
         }

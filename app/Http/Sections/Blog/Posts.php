@@ -94,22 +94,25 @@ class Posts extends Section implements Initializable
                 }),
         ]);
 
+        $elements = [];
+
         foreach ($languages as $slug => $language) {
-            $panel = new \SleepingOwl\Admin\Form\FormElements([
-                \AdminFormElement::text('header:' . $slug, 'Header')
-                    ->addValidationRule('max:255')
-                    ->required(),
-                \AdminFormElement::text('title:' . $slug, 'Title')
-                    ->addValidationRule('max:255')
-                    ->required(),
-                \AdminFormElement::textarea('content:' . $slug, 'Content')
-                    ->required(),
-                \AdminFormElement::textarea('description:' . $slug, 'Description')
-                    ->required(),
-                \AdminFormElement::textarea('keywords:' . $slug, 'Keywords')
-                    ->addValidationRule('max:255')
-                    ->required(),
-            ]);
+            $elements['header'] = \AdminFormElement::text('header:' . $slug, 'Header')
+                ->addValidationRule('max:255');
+            $elements['title'] = \AdminFormElement::text('title:' . $slug, 'Title')
+                ->addValidationRule('max:255');
+            $elements['description'] = \AdminFormElement::textarea('description:' . $slug, 'Description');
+            $elements['keywords'] = \AdminFormElement::textarea('keywords:' . $slug, 'Keywords')
+                ->addValidationRule('max:255');
+            $elements['content'] = \AdminFormElement::textarea('content:' . $slug, 'Content');
+
+            if ($slug === config('app.locale')) {
+                foreach ($elements as $element) {
+                    $element->required();
+                }
+            }
+
+            $panel = new \SleepingOwl\Admin\Form\FormElements($elements);
 
             $tabs->appendTab($panel, $language);
         }

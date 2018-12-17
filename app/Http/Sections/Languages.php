@@ -88,12 +88,19 @@ class Languages extends Section implements Initializable
                 }),
         ]);
 
+        $elements = [];
+
         foreach ($languages as $slug => $language) {
-            $panel = new \SleepingOwl\Admin\Form\FormElements([
-                \AdminFormElement::text('name:' . $slug, 'Language')
-                    ->addValidationRule('max:80')
-                    ->required(),
-            ]);
+            $elements['name'] = \AdminFormElement::text('name:' . $slug, 'Language')
+                ->addValidationRule('max:80');
+
+            if ($slug === config('app.locale')) {
+                foreach ($elements as $element) {
+                    $element->required();
+                }
+            }
+
+            $panel = new \SleepingOwl\Admin\Form\FormElements($elements);
 
             $tabs->appendTab($panel, $language);
         }

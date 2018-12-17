@@ -24,10 +24,10 @@ class CreatePagesTable extends Migration
             $table->integer('page_id')->unsigned();
             $table->string('locale')->index();
 
-            $table->string('title')->comment('Заголовок');
-            $table->string('description')->comment('Описание');
-            $table->string('keywords')->comment('Ключевые слова');
-            $table->json('content')->comment('Контент');
+            $table->string('title')->nullable()->comment('Заголовок');
+            $table->string('description')->nullable()->comment('Описание');
+            $table->string('keywords')->nullable()->comment('Ключевые слова');
+            $table->json('content')->nullable()->comment('Контент');
 
             $table->unique(['page_id', 'locale']);
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
