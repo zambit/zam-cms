@@ -104,7 +104,7 @@ class Posts extends Section implements Initializable
             $elements['description'] = \AdminFormElement::textarea('description:' . $slug, 'Description');
             $elements['keywords'] = \AdminFormElement::textarea('keywords:' . $slug, 'Keywords')
                 ->addValidationRule('max:255');
-            $elements['content'] = \AdminFormElement::textarea('content:' . $slug, 'Content');
+            $elements['content'] = \AdminFormElement::ckeditor('content:' . $slug, 'Content');
 
             if ($slug === config('app.locale')) {
                 foreach ($elements as $element) {
