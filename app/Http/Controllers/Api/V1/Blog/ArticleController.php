@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api\V1\Blog;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Article\IndexRequest;
 use App\Http\Resources\Blog\ArticleResource;
 use App\Models\Blog\Article;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -23,10 +23,10 @@ class ArticleController extends Controller
      * @queryParam category Filter by a category ID.
      * @queryParam author Filter by an author ID.
      * @queryParam tags Filter by an tag ID. You can list several, separated by commas.
-     * @param Request $request
+     * @param IndexRequest $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(Request $request)
+    public function index(IndexRequest $request)
     {
         $limit = $request->input('limit', 20);
 
