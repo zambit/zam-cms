@@ -37,4 +37,9 @@ class Page extends Model
         'keywords',
         'content',
     ];
+
+    public function getContentAttribute($value)
+    {
+        return json_encode(json_decode($value), JSON_PRETTY_PRINT);
+    }
 }
