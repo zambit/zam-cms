@@ -195,5 +195,10 @@ class BlogArticlesTest extends TestCase
             'timezone_type',
             'timezone',
         ],
+        'published_at' => [
+            'date',
+            'timezone_type',
+            'timezone',
+        ],
     ];
 }

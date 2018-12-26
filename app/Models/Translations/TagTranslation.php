@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $tag_id
  * @property string $locale
+ * @property string|null $name Название тега
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\TagTranslation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\TagTranslation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\TagTranslation query()

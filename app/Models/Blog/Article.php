@@ -10,16 +10,12 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\Blog\Article
  *
  * @property int $id
- * @property string $header Наименование
- * @property string $title Заголовок
- * @property string $description Описание
- * @property string $keywords Ключевые слова
- * @property string $image Главная картинка
  * @property int $category_id Категория
- * @property string $content Контент
  * @property int $author_id Автор
+ * @property string $image Главная картинка
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $published_at Дата публикации
  * @property-read \App\Models\User $author
  * @property-read \App\Models\Blog\Category $category
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Blog\Tag[] $tags
@@ -51,6 +47,10 @@ class Article extends Model
         'description',
         'keywords',
         'content',
+    ];
+
+    protected $dates = [
+        'published_at',
     ];
 
     /**

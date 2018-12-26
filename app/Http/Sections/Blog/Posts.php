@@ -53,6 +53,8 @@ class Posts extends Section implements Initializable
             ->setHtmlAttribute('class', 'table-primary')
             ->setColumns(
                 \AdminColumn::text('id', '#')->setWidth('30px'),
+                \AdminColumn::datetime('published_at', 'Published')
+                    ->setFormat('d.m.Y H:i')->setWidth('150px'),
                 \AdminColumn::text('header', 'Header'),
                 \AdminColumn::text('category.name', 'Category'),
                 \AdminColumn::text('author.name', 'Author'),
@@ -77,6 +79,7 @@ class Posts extends Section implements Initializable
         $languages = Language::all()->pluck('name', 'slug')->toArray();
 
         $form->addHeader([
+            \AdminFormElement::datetime('published_at', 'Published'),
             \AdminFormElement::select('category_id', 'Category', Category::class)
                 ->required()
                 ->setDisplay('name'),

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\Language
  *
  * @property int $id
- * @property string $name Полное название языка
  * @property string $slug Двухбуквенный код ISO 639-1 (1998)
  * @property string $flag Картинка обозначения языка (флаг)
  * @property \Illuminate\Support\Carbon|null $created_at

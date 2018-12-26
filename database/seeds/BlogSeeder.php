@@ -24,7 +24,7 @@ class BlogSeeder extends Seeder
 
         $users = User::all();
 
-        factory(Article::class, 3)->states('image')
+        factory(Article::class, 40)->states('image')
             ->make()
             ->each(function (Article $a) use ($categories, $tags, $users) {
                 $a->category_id = $categories->random()->id;

@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $category_id
  * @property string $locale
+ * @property string|null $name Название категории
+ * @property string|null $description Описание категории
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CategoryTranslation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CategoryTranslation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Translations\CategoryTranslation query()

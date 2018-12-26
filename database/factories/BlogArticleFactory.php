@@ -14,6 +14,7 @@ $factory->define(\App\Models\Blog\Article::class, function (Faker $faker) {
         'image' => 'storage/articles/demo.jpg',
         'category_id' => null,
         'author_id' => null,
+        'published_at' => $faker->optional()->dateTimeBetween('-5 days', '+5days'),
 
         'header:en' => 'EN: ' . $header,
         'title:en' => 'EN: ' . $title,

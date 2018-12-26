@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1\Blog;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Blog\ArticleResource;
 use App\Models\Blog\Article;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,9 @@ class ArticleController extends Controller
     {
         $limit = $request->input('limit', 20);
 
-        $builder = Article::with('tags', 'author', 'category');
+        $builder = Article::with('tags', 'author', 'category')
+            ->where('published_at', '<=', Carbon::now())
+            ->latest('published_at');
 
         if ($categoryId = $request->input('category')) {
             $builder->where('category_id', '=', $categoryId);

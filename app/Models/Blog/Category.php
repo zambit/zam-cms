@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\Blog\Category
  *
  * @property int $id
- * @property string $name Название категории
- * @property string $description Описание категории
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Translations\CategoryTranslation[] $translations

@@ -32,6 +32,7 @@ class ArticleResource extends JsonResource
             'author' => $this->author,
             'tags' => $this->tags,
             'created_at' => $this->created_at,
+            'published_at' => $this->published_at,
         ];
     }
 
