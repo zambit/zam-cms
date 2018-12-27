@@ -38,12 +38,5 @@ class LanguagesTableSeeder extends Seeder
             'slug' => 'ru',
             'flag' => 'storage/languages/demo_ru.png',
         ],
-        [
-            'name:en' => 'Polish',
-            'name:ru' => 'Польский',
-            'name:pl' => 'Polski',
-            'slug' => 'pl',
-            'flag' => 'storage/languages/demo_pl.png',
-        ],
     ];
 }

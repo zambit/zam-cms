@@ -14,9 +14,12 @@ class DatabaseSeeder extends Seeder
         $this->clearImages(storage_path('app/public/articles'), []);
 
         $this->call(LanguagesTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(PagesTableSeeder::class);
-        $this->call(BlogSeeder::class);
+
+        if (env('APP_ENV') != 'production') {
+            $this->call(UsersTableSeeder::class);
+            $this->call(PagesTableSeeder::class);
+            $this->call(BlogSeeder::class);
+        }
     }
 
     protected function clearImages(string $path, array $exclude = [])
